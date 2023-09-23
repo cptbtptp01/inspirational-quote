@@ -17,7 +17,7 @@
     "inspirational"
   ],
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=14.x"
   },
   "author": "chiputao",
   "license": "MIT",
