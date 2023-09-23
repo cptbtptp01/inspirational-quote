@@ -1,30 +1,28 @@
-const express = require("express");
-const path = require("path");
-const logger = require("morgan");
-const compression = require("compression");
-const helmet = require("helmet");
-const createError = require("http-errors");
+const express = require('express');
+const path = require('path');
+const logger = require('morgan');
+const compression = require('compression');
+const helmet = require('helmet');
+const createError = require('http-errors');
 
 // TODO: swagger, openapi
 
 const app = express();
-const apiRouter = require("./routes/api");
+const apiRouter = require('./routes/api');
 
 // middleware
-app.use(
-  logger("[API] :method :url :status :res[content-length] - :response-time ms")
-);
+app.use(logger('[API] :method :url :status :res[content-length] - :response-time ms'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(compression());
-app.disable("x-powered-by");
+app.disable('x-powered-by');
 
 // security TBD
 app.use(helmet());
 
 // routes
-app.use("/", express.static(path.join(__dirname, "public")));
-app.use("/api", apiRouter);
+app.use('/', express.static(path.join(__dirname, 'public')));
+app.use('/api', apiRouter);
 
 // TODO app.use('api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument or openapiDocument));
 
@@ -36,7 +34,7 @@ app.use((req, res, next) => {
 app.use((err, req, res, next) => {
   console.error(err.message);
   res.locals.message = err.message;
-  res.locals.error = req.app.get("env") === "development" ? err : {};
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   res.status(err.status || 500);
   res.send(err);

@@ -1,7 +1,7 @@
-let createError = require("http-errors");
-const quoteService = require("../service/quoteService");
+const createError = require('http-errors');
+const quoteService = require('../service/quoteService');
 
-let wrap =
+const wrap =
   (fn) =>
   (...args) =>
     fn(...args).catch(args[2]); // wrap async functions in express routes
@@ -12,8 +12,8 @@ exports.getAuthors = wrap(async (req, res, next) => {
     if (author && author.length < 3) {
       author = undefined;
     }
-  const authors = await quoteService.findAuthors(author);
-  res.send(authors);
+    const authors = await quoteService.findAuthors(author);
+    res.send(authors);
   } catch (err) {
     next(createError(500, err));
   }

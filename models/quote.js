@@ -1,7 +1,7 @@
 module.exports = (sequelize, Sequelize) => {
   // schema
   const Quote = sequelize.define(
-    "quote",
+    'quote',
     {
       author: {
         type: Sequelize.STRING,
@@ -14,7 +14,7 @@ module.exports = (sequelize, Sequelize) => {
     },
     {
       timestamps: false,
-    }
+    },
   );
 
   return Quote;
