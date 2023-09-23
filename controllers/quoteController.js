@@ -1,5 +1,5 @@
 let createError = require("http-errors");
-const quoteService = require("../services/quoteService");
+const quoteService = require("../service/quoteService");
 
 let wrap =
   (fn) =>
@@ -7,21 +7,38 @@ let wrap =
     fn(...args).catch(args[2]); // wrap async functions in express routes
 
 exports.getAuthors = wrap(async (req, res, next) => {
-  // TODO: implement
-});
-
-exports.getQuotesByAuthor = wrap(async (req, res, next) => {
-  // TODO: implement
+  try {
+    let author = req.query.q;
+    if (author && author.length < 3) {
+      author = undefined;
+    }
+  const authors = await quoteService.findAuthors(author);
+  res.send(authors);
+  } catch (err) {
+    next(createError(500, err));
+  }
 });
 
 exports.getRandomQuote = wrap(async (req, res, next) => {
-  // TODO: implement
+  const quote = await quoteService.findRandomQuote();
+  res.send(quote);
 });
 
-exports.getQuotesByKeyword = wrap(async (req, res, next) => {
-  // TODO: implement
-});
+exports.searchQuotes = wrap(async (req, res, next) => {
+  let query = req.query.q;
+  let author = req.query.author;
 
-exports.getQuoteById = wrap(async (req, res, next) => {
-  // TODO: implement
+  if (query && query.length < 3) {
+    query = undefined;
+  }
+
+  if (author && author.length < 3) {
+    author = undefined;
+  }
+
+  let quotes = [];
+  if (query || author) {
+    quotes = await quoteService.find(query, author);
+  }
+  res.send(quotes);
 });

@@ -5,16 +5,22 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile:sass": "sass sass/index.sass public/styles/main.css"
   },
   "keywords": [
-      "quotes",
-      "zen",
-      "inspirational"],
+    "quotes",
+    "zen",
+    "inspirational"
+  ],
   "author": "chiputao",
   "license": "MIT",
   "dependencies": {
+    "compression": "^1.7.4",
     "express": "^4.18.2",
+    "helmet": "^7.0.0",
+    "http-errors": "^2.0.0",
+    "morgan": "^1.10.0",
     "nodemon": "^3.0.1",
     "sequelize": "^6.33.0",
     "sqlite3": "^5.1.6"
