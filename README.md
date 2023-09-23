@@ -1,6 +1,6 @@
 # Inspirational Quote
 
-Inspiration Quote is a web application build with Node.js REST API server and Vanilla JavaScript client😀. The application uses SQLite as the database. The application allows users to get random quotes, search for quotes by author name or keywords. The application is deployed on Heroku and can be accessed at https://inspirational-quote.herokuapp.com/.
+Inspiration Quote is a web application build with Node.js REST API server and Vanilla JavaScript client😀. The application uses SQLite as the database. The application allows users to get random quotes, search for quotes by author name or keywords. The application is deployed on Heroku and can be accessed at [here](https://inspirational-quotes-16ab0254ba13.herokuapp.com/).
 
 ## Features
 
