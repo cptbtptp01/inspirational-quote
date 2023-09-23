@@ -14,20 +14,34 @@
     referrerpolicy="no-referrer"
   />
   <link rel="stylesheet" type="text/css" href="/styles/main.css" />
-  <script defer src="/scripts/main.js"></script>
-
   <body>
     <div id="topnav" class="topnav topnav-bg">
       <div class="toolbar">
-        <a href="#" id="about-link" title="About">
-          <span>About</span>
-        </a>
-        <a href="#" id="quote-link" title="Random quote">
-          <span>Get Random Quote</span>
-        </a>
-        <a href="#" id="authors-link" title="List authors">
-          <span>List Authors</span>
-        </a>
+        <!-- Icon version of the menu -->
+        <div class="icon-menu">
+          <a href="#" id="about-link" title="About">
+            <i class="fas fa-info"></i>
+          </a>
+          <a href="#" id="quote-link" title="Random quote">
+            <i class="fas fa-random fa-fw"></i>
+          </a>
+          <a href="#" id="authors-link" title="List authors">
+            <i class="fas fa-list-ul fa-fw"></i>
+          </a>
+        </div>
+        
+        <!-- Text version of the menu -->
+        <div class="text-menu">
+          <a href="#" id="about-link-text" title="About">
+            <span>About</span>
+          </a>
+          <a href="#" id="quote-link-text" title="Random quote">
+            <span>Get Random</span>
+          </a>
+          <a href="#" id="authors-link-text" title="List authors">
+            <span>List Authors</span>
+          </a>
+        </div>
       </div>
       <div class="search-container">
         <form id="search">
@@ -39,5 +53,6 @@
       </div>
     </div>
     <div id="container" class="container center-aligned"></div>
-  </body>
+</body>
+<script defer src="/scripts/main.js"></script>
 </html>

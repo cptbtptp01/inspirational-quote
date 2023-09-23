@@ -2,20 +2,16 @@ function emptyContainer(title, isCenterAligned) {
   const c = document.getElementById('container');
 
   document.body.scrollTop = 0; // For Safari
-  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
   document.getElementById('title').innerText = title;
 
   c.innerHTML = '';
 
-  if (isCenterAligned === true) {
-    if (c.classList.contains('top-aligned')) {
-      c.classList.replace('top-aligned', 'center-aligned');
-    }
-  } else {
-    if (c.classList.contains('center-aligned')) {
-      c.classList.replace('center-aligned', 'top-aligned');
-    }
-  }
+  // Calculate the height of the navigation bar
+  const navHeight = document.getElementById('topnav').offsetHeight;
+
+  // Apply padding to the top of the container
+  c.style.paddingTop = navHeight + 'px';
 
   return c;
 }
@@ -195,8 +191,12 @@ function showAbout() {
   const div = document.createElement('div');
   div.className = 'about';
   div.innerHTML =
-    '<p>&copy; Inspiration Quote</p><p>build with Node.js REST API, Vanilla JS, SQLite3</p><p>Developed by Huiru😀</p><p class="icon-link"><a href="https://huiruyang.works/" title="Personal Website"><i class="fa-solid fa-house fa-fw"></i></a> <a href="https://github.com/cptbtptp01" title="GitHub"><i class="fa-brands fa-github fa-fw"></i></a> <a href="https://www.linkedin.com/in/huiru-yang/" title="LinkedIn"><i class="fa-brands fa-linkedin fa-fw"></i></a> <a href="mailto:huiru.young@gmail.com" title="Email"><i class="fa-solid fa-envelope fa-fw"></i></a></p>';
+    '<p>&copy; Inspiration Quote</p><p>build with Node.js REST API, Vanilla JS, SQLite3</p><p>Developed by Huiru😀</p>';
 
+  const links = document.createElement('div');
+  links.className = 'links';
+  links.innerHTML = '<a href="https://huiruyang.works/" title="Personal Website"><i class="fa-solid fa-house fa-fw"></i></a> <a href="https://github.com/cptbtptp01" title="GitHub"><i class="fa-brands fa-github fa-fw"></i></a> <a href="https://www.linkedin.com/in/huiru-yang/" title="LinkedIn"><i class="fa-brands fa-linkedin fa-fw"></i></a> <a href="mailto:huiru.young@gmail.com" title="Email"><i class="fa-solid fa-envelope fa-fw"></i></a>';
+  div.appendChild(links);
   showCenteredItem('About', div);
 }
 
@@ -219,9 +219,30 @@ window.addEventListener('DOMContentLoaded', () => {
     showAbout();
   });
 
+  document.getElementById('quote-link-text').addEventListener('click', (e) => {
+    e.preventDefault();
+    showRandomQuote();
+  });
+  
+  document.getElementById('authors-link-text').addEventListener('click', (e) => {
+    e.preventDefault();
+    showAuthors();
+  });
+  
+  document.getElementById('about-link-text').addEventListener('click', (e) => {
+    e.preventDefault();
+    showAbout();
+  });
+
   document.forms.search.addEventListener('submit', function (e) {
     e.preventDefault();
     searchQuotes(this);
+    // Clear the input field after submitting the form
+    const searchInput = document.getElementById('q');
+    searchInput.value = '';
+
+    // Return focus to the input field (optional)
+    searchInput.focus();
   });
 
   document.getElementById('q').addEventListener('click', function () {

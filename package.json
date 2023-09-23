@@ -16,6 +16,9 @@
     "zen",
     "inspirational"
   ],
+  "engines": {
+    "node": ">=14.0.0"
+  },
   "author": "chiputao",
   "license": "MIT",
   "dependencies": {

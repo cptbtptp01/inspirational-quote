@@ -31,6 +31,7 @@ body {
   align-items: center;
   background: none;
   height: 100%;
+  position: relative;
 }
 
 .top-aligned {
@@ -240,8 +241,7 @@ a:hover {
 .topnav .search-container {
   flex-grow: 1;
   flex-basis: 33%;
-  /* text-align: right; */
-  padding-right: 20px;
+  /* padding-right: 10px; */
 }
 
 .topnav .search-container form {
@@ -265,11 +265,26 @@ a:hover {
   width: 150px;
 }
 
-@media only screen and (min-width: 375px) and (max-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
-  .topnav .title {
+/* For screens smaller than 768px, display the icon version and hide the text version */
+@media only screen and (max-width: 768px) {
+  .icon-menu {
+    display: block;
+  }
+  .text-menu {
     display: none;
   }
 }
+
+/* For screens larger than 768px, display the text version and hide the icon version */
+@media only screen and (min-width: 769px) {
+  .icon-menu {
+    display: none;
+  }
+  .text-menu {
+    display: block;
+  }
+}
+
 
 .transbox {
   margin: auto;
@@ -284,7 +299,7 @@ a:hover {
 .quote {
   display: inline-block;
   margin-bottom: 4px;
-  margin-top: 4px;
+  margin-top: 10px;
   position: relative;
   text-align: left;
   width: 360px;
