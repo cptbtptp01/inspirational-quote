@@ -24,6 +24,12 @@ exports.getRandomQuote = wrap(async (req, res, next) => {
   res.send(quote);
 });
 
+exports.getRandomAuthor = wrap(async (req, res, next) => {
+  const author = await quoteService.findRandomAuthor();
+  const quotes = await quoteService.find(author);
+  res.send(quotes);
+});
+
 exports.searchQuotes = wrap(async (req, res, next) => {
   let query = req.query.q;
   let author = req.query.author;

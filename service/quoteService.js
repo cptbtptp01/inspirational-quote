@@ -34,6 +34,14 @@ exports.findRandomQuote = async () => {
   });
 };
 
+exports.findRandomAuthor = async () => {
+  return new Promise((resolve, reject) => {
+    Quote.findOne({ attributes: ['author'], order: db.sequelize.random() })
+      .then((data) => resolve(data.author))
+      .catch((err) => reject(err));
+  });
+};
+
 exports.find = async (str, author) => {
   let query = {};
   const where = (col, s) => {

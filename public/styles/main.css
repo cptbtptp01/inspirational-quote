@@ -25,6 +25,7 @@ body {
 .title {
   color: #646464; /* Gray */
   font-size: 1.2em;
+  padding-right: 10px;
 }
 
 .center-aligned {
@@ -224,24 +225,7 @@ a:hover {
 }
 
 .topnav .toolbar {
-  flex-basis: 33%;
-  flex-grow: 1;
-  flex-shrink: 1;
-  padding-left: 48px;
   text-align: left;
-}
-
-.topnav .title {
-  flex-basis: 33%;
-  flex-grow: 1;
-  flex-shrink: 1;
-  text-align: center;
-}
-
-.topnav .search-container {
-  flex-grow: 1;
-  flex-basis: 33%;
-  /* padding-right: 10px; */
 }
 
 .topnav .search-container form {

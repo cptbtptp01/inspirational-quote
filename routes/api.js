@@ -4,6 +4,7 @@ const quoteController = require('../controllers/quoteController');
 
 // quotes routes
 router.get('/authors', quoteController.getAuthors); // list all authors
+router.get('/quotes/random-author', quoteController.getRandomAuthor); // get a random author's quotes
 router.get('/quotes/random', quoteController.getRandomQuote); // get a random quote
 router.get('/quotes', quoteController.searchQuotes); // get quotes by keyword or author
 

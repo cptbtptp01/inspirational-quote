@@ -114,8 +114,6 @@ function createSingleQuote(item) {
 
   const p = createQuoteItem(quote, item);
 
-  p.appendChild(createSingleQuoteToolbar());
-
   quote.appendChild(p);
 
   return createCenteredItem(quote);
@@ -170,7 +168,7 @@ function getQuoteId() {
 }
 
 function showQuote(id = null) {
-  const path = 'quotes/' + (id || getQuoteId() || 'random');
+  const path = 'quotes/' + (id || getQuoteId() || 'random-author');
   callAPI(path, createSingleQuote, 'Inspirational Quote', 'Could not find quote');
 }
 
@@ -206,7 +204,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   document.getElementById('quote-link').addEventListener('click', (e) => {
     e.preventDefault();
-    showRandomQuote();
+    showRandom();
   });
 
   document.getElementById('authors-link').addEventListener('click', (e) => {
