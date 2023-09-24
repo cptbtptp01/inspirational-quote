@@ -204,7 +204,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   document.getElementById('quote-link').addEventListener('click', (e) => {
     e.preventDefault();
-    showRandom();
+    showRandomQuote();
   });
 
   document.getElementById('authors-link').addEventListener('click', (e) => {
