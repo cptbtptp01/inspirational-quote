@@ -60,28 +60,6 @@ function createAuthor(item) {
   return div;
 }
 
-function createSingleQuoteToolbar() {
-  const s = document.createElement('span');
-
-  s.className = 'toolbar';
-
-  const a = document.createElement('a');
-  a.href = '#';
-  a.title = 'Random quote';
-  a.addEventListener('click', (e) => {
-    e.preventDefault();
-    showRandomQuote();
-  });
-
-  const i = document.createElement('i');
-  i.className = 'fas fa-random fa-fw';
-
-  a.appendChild(i);
-  s.appendChild(a);
-
-  return s;
-}
-
 function createQuoteItem(quote, item) {
   let p = document.createElement('p');
 
@@ -193,7 +171,8 @@ function showAbout() {
 
   const links = document.createElement('div');
   links.className = 'links';
-  links.innerHTML = '<a href="https://huiruyang.works/" title="Personal Website"><i class="fa-solid fa-house fa-fw"></i></a> <a href="https://github.com/cptbtptp01" title="GitHub"><i class="fa-brands fa-github fa-fw"></i></a> <a href="https://www.linkedin.com/in/huiru-yang/" title="LinkedIn"><i class="fa-brands fa-linkedin fa-fw"></i></a> <a href="mailto:huiru.young@gmail.com" title="Email"><i class="fa-solid fa-envelope fa-fw"></i></a>';
+  links.innerHTML =
+    '<a href="https://huiruyang.works/" title="Personal Website"><i class="fa-solid fa-house fa-fw"></i></a> <a href="https://github.com/cptbtptp01" title="GitHub"><i class="fa-brands fa-github fa-fw"></i></a> <a href="https://www.linkedin.com/in/huiru-yang/" title="LinkedIn"><i class="fa-brands fa-linkedin fa-fw"></i></a> <a href="mailto:huiru.young@gmail.com" title="Email"><i class="fa-solid fa-envelope fa-fw"></i></a>';
   div.appendChild(links);
   showCenteredItem('About', div);
 }
@@ -221,12 +200,12 @@ window.addEventListener('DOMContentLoaded', () => {
     e.preventDefault();
     showRandomQuote();
   });
-  
+
   document.getElementById('authors-link-text').addEventListener('click', (e) => {
     e.preventDefault();
     showAuthors();
   });
-  
+
   document.getElementById('about-link-text').addEventListener('click', (e) => {
     e.preventDefault();
     showAbout();

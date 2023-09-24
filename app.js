@@ -5,7 +5,8 @@ const compression = require('compression');
 const helmet = require('helmet');
 const createError = require('http-errors');
 
-// TODO: swagger, openapi
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./docs/swagger');
 
 const app = express();
 const apiRouter = require('./routes/api');
@@ -17,14 +18,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(compression());
 app.disable('x-powered-by');
 
-// security TBD
+// security
 app.use(helmet());
 
 // routes
 app.use('/', express.static(path.join(__dirname, 'public')));
 app.use('/api', apiRouter);
 
-// TODO app.use('api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument or openapiDocument));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // error handler
 app.use((req, res, next) => {
