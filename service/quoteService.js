@@ -66,7 +66,23 @@ exports.find = async (str, author) => {
 
   return new Promise((resolve, reject) => {
     Quote.findAll(query)
-      .then((data) => resolve(data))
+      .then((data) => {
+        // Modify the quotes to include HTML markup for highlighting
+        const highlightedQuotes = data.map((quoteData) => {
+          const quoteText = quoteData.quote;
+          if (str) {
+            // Wrap the matching query text with a <span> element and a "highlight" class
+            const regex = new RegExp(str, 'gi');
+            const highlightedText = quoteText.replace(
+              regex,
+              (match) => `<span class="highlight">${match}</span>`
+            );
+            return { ...quoteData.toJSON(), quote: highlightedText };
+          }
+          return quoteData;
+        });
+        resolve(highlightedQuotes);
+      })
       .catch((err) => reject(err));
   });
 };

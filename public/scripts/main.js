@@ -61,16 +61,22 @@ function createAuthor(item) {
 }
 
 function createQuoteItem(quote, item) {
+const quoteText = item.quote;
+
   let p = document.createElement('p');
 
-  p.appendChild(document.createTextNode(item.quote));
+  p.innerHTML = quoteText;
+  const authorParagraph = document.createElement('p');
+  authorParagraph.innerHTML = `&ndash; ${createAuthorLink(item.author).outerHTML}`;
+
+  p.appendChild(authorParagraph);
 
   quote.appendChild(p);
 
   p = document.createElement('p');
-  p.innerHTML = '&ndash; ';
 
-  p.appendChild(createAuthorLink(item.author));
+
+
 
   return p;
 }
