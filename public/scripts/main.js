@@ -211,13 +211,24 @@ window.addEventListener('DOMContentLoaded', () => {
     showAbout();
   });
 
-  document.forms.search.addEventListener('submit', function (e) {
+  // Icon menu search form
+  document.forms['icon-search'].addEventListener('submit', function (e) {
     e.preventDefault();
     searchQuotes(this);
     // Clear the input field after submitting the form
-    const searchInput = document.getElementById('q');
+    const searchInput = document.getElementById('q-icon');
     searchInput.value = '';
+    // Return focus to the input field (optional)
+    searchInput.focus();
+  });
 
+  // Text menu search form
+  document.forms['text-search'].addEventListener('submit', function (e) {
+    e.preventDefault();
+    searchQuotes(this);
+    // Clear the input field after submitting the form
+    const searchInput = document.getElementById('q-text');
+    searchInput.value = '';
     // Return focus to the input field (optional)
     searchInput.focus();
   });
