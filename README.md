@@ -2,6 +2,8 @@
 
 **Inspirational Quote** is a web application built using a Node.js REST API server and a Vanilla JavaScript client 😃. This application utilizes an SQLite database to enable users to access a variety of features, including retrieving random quotes, searching for quotes by author name or keywords, listing all authors, and fetching quotes by a specific author. Moreover, the application is deployed on Heroku with a robust CI/CD pipeline.
 
+Please visit [here](https://www.huiruyang.works/projects/inspirational-quotes) for more information about the project.
+
 ## Key Features
 
 - **Random Quotes**: Get inspired by fetching random quotes.
